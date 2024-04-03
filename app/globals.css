@@ -2,32 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+input[type="checkbox"] {
+  margin: 0;
+  display: none;
+  background-color: transparent;
+  left: 99999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.check-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 2.3rem;
+  width: 5rem;
+  position: relative;
+  border-radius: 9999px;
+  cursor: pointer;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.check-label svg {
+  z-index: 40;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.switcher {
+  position: absolute;
+  left: 2px;
+
+  width: 2.3rem;
+  height: 2.15rem;
+  transform: scale(0.9);
+  background-color: #557FF2;
+  border-radius: 100%;
+  transition: 0.3s ease;
+}
+
+input[type="checkbox"]:checked ~ .check-label .switcher {
+  background-color: #557FF2;
+  position: absolute;
+  left: 2.6rem;
+  transition: 0.3s ease;
+}
+
+input[type="checkbox"]:checked ~ .check-label .sun path {
+  fill: #b2abab;
+}
+
+input[type="checkbox"]:checked ~ .check-label .moon path {
+  fill: #fff;
 }
