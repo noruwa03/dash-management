@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Signup from "./Signup";
-import Header from "@/app/components/Auth/Header";
+import Header from "@/app/components/Header";
 
 const RegisterPage = () => {
   return (

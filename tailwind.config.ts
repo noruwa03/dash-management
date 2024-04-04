@@ -8,7 +8,22 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        "loop-scroll": "loop-scroll 50s linear infinite",
+        "loop-scroll-reverse": "loop-scroll-reverse 50s linear infinite",
+      },
+      keyframes: {
+        "loop-scroll": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(-100%)" },
+        },
+        "loop-scroll-reverse": {
+          from: { transform: "translateY(-100%)" },
+          to: { transform: "translateY(0)" },
+        },
+      },
+    },
   },
   plugins: [],
 };

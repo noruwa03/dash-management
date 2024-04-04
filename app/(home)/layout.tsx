@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
 };
 
-const AuthLayout = ({ children }: { children: React.ReactNode }) => {
+const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className="dark:bg-[#0D0D0D]">
@@ -20,4 +20,4 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default AuthLayout;
+export default HomeLayout;

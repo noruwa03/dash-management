@@ -1,6 +1,10 @@
 import React from "react";
 
-const ResetEmailPassword = () => {
+type Modal = {
+  close: () => void;
+};
+
+const ResetEmailPassword = (Props: Modal) => {
   return (
     <>
       {" "}
@@ -13,6 +17,7 @@ const ResetEmailPassword = () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="absolute sm:top-10 top-6 sm:right-8 right-4"
+            onClick={Props.close}
           >
             <path
               fillRule="evenodd"

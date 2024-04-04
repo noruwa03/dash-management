@@ -1,39 +1,34 @@
 "use client";
+import ResetEmailPassword from "@/app/components/Auth/Modals/ResetEmailPassword";
 import Link from "next/link";
 import { useState, FormEvent, ChangeEvent } from "react";
 
 type UserInput = {
-  firstName: string;
-  lastName: string;
   username: string;
-  email: string;
+
   password: string;
-  confirmPassword: string;
 };
 
-const Signup = () => {
+const Signin = () => {
   const userInput: UserInput = {
-    firstName: "",
-    lastName: "",
     username: "",
-    email: "",
+
     password: "",
-    confirmPassword: "",
   };
   const [input, setInput] = useState(userInput);
   const [passwordError, setPasswordError] = useState<string>("");
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
-    useState(false);
+
   const [buttonDisabled, setIsButtonDisable] = useState(false);
+  const [forgotPasswordModal, setForgotPasswordModal] = useState(false);
+
+  const toggleForgotPasswordModal = () => {
+    setForgotPasswordModal((prevState) => !forgotPasswordModal);
+  };
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible((prevState) => !prevState);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
-    setIsConfirmPasswordVisible((prevState) => !prevState);
   };
 
   const onChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
@@ -44,48 +39,25 @@ const Signup = () => {
   const submitHandler = (evt: FormEvent) => {
     evt.preventDefault();
 
-    if (input.password !== input.confirmPassword) {
-      setPasswordError("Password does not match");
-    } else {
-      setPasswordError("");
-      setIsButtonDisable(!buttonDisabled);
-    }
+    setPasswordError("");
+    setIsButtonDisable(!buttonDisabled);
   };
 
   return (
     <>
-      <div className="lg:px-16 sm:px-8 px-4 lg:py-3 py-0">
+      {forgotPasswordModal && (
+        <ResetEmailPassword close={toggleForgotPasswordModal} />
+      )}
+
+      <div className="lg:px-16 sm:px-8 px-4 lg:py-3 py-16">
         <form
           onSubmit={submitHandler}
-          className="lg:w-[44%] sm:w-[4/5] w-5/5 mx-auto sm:bg-white bg-[#FAFCFD] dark:bg-[#0D0D0D] dark:text-white sm:p-6 p-0 rounded-md mb-8"
+          className="lg:w-[37%] sm:w-[4/5] w-5/5 mx-auto sm:bg-white bg-[#FAFCFD] dark:bg-[#0D0D0D] dark:text-white sm:p-6 p-0 rounded-md mb-8"
         >
           <h1 className="text-center lg:text-lg text-2xl font-medium mb-5">
-            Sign Up
+            Sign in
           </h1>
-          <div className="grid grid-cols-4 gap-4">
-            <div className="col-span-2">
-              <input
-                type="text"
-                name="firstName"
-                value={input.firstName}
-                onChange={onChangeHandler}
-                className="block w-full mt-1 outline-none border-[1px] bg-[#F3F7FE] border-[#D4DCF1] focus:border-[#557FF2] px-4 lg:py-[0.55rem] py-3 rounded-md placeholder:text-black  placeholder:font-medium placeholder:text-sm dark:placeholder:text-white dark:bg-[#242428] dark:border-[#3366FF]/35"
-                placeholder="First Name"
-                required
-              />
-            </div>
-            <div className="col-span-2">
-              <input
-                type="text"
-                name="lastName"
-                value={input.lastName}
-                onChange={onChangeHandler}
-                className="block w-full mt-1 outline-none border-[1px] bg-[#F3F7FE] border-[#D4DCF1] focus:border-[#557FF2] px-4 lg:py-[0.55rem] py-3 rounded-md placeholder:text-black  placeholder:font-medium placeholder:text-sm dark:placeholder:text-white dark:bg-[#242428] dark:border-[#3366FF]/35"
-                placeholder="Last Name"
-                required
-              />
-            </div>
-          </div>
+
           <div className="mt-5">
             <input
               type="text"
@@ -97,17 +69,7 @@ const Signup = () => {
               required
             />
           </div>
-          <div className="mt-5">
-            <input
-              type="text"
-              name="email"
-              value={input.email}
-              onChange={onChangeHandler}
-              className="block w-full mt-1 outline-none border-[1px] bg-[#F3F7FE] border-[#D4DCF1] focus:border-[#557FF2] px-4 lg:py-[0.55rem] py-3 rounded-md placeholder:text-black  placeholder:font-medium placeholder:text-sm dark:placeholder:text-white dark:bg-[#242428] dark:border-[#3366FF]/35"
-              placeholder="E-mail address"
-              required
-            />
-          </div>
+
           <div className="relative mt-5">
             <input
               type={isPasswordVisible ? "text" : "password"}
@@ -124,17 +86,18 @@ const Signup = () => {
             >
               {isPasswordVisible ? (
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
                   fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5 stroke-[#0D2159] dark:stroke-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="[&>path]:fill-[#FBFAFC]"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M8.0025 7.50268C7.45335 7.50268 7.00406 7.95385 7.00406 8.50528C7.00406 9.0567 7.45335 9.50787 8.0025 9.50787C8.55164 9.50787 9.00094 9.0567 9.00094 8.50528C9.00094 7.95385 8.55164 7.50268 8.0025 7.50268ZM15.99 8.4752C15.99 8.46517 15.99 8.46517 15.99 8.45515V8.44512C15.99 8.43509 15.99 8.43509 15.99 8.42507C15.99 8.41504 15.99 8.41504 15.99 8.40502C15.97 8.26465 15.9101 8.14434 15.8203 8.04408C15.3111 7.37234 14.702 6.78081 14.083 6.23941C12.7551 5.06637 11.2374 4.08383 9.56006 3.69282C8.58159 3.4522 7.6131 3.44217 6.63463 3.63266C5.74602 3.81313 4.89735 4.17407 4.08861 4.62523C2.84056 5.33708 1.69236 6.30959 0.693916 7.40242C0.514197 7.61297 0.334477 7.81349 0.164743 8.03406C-0.0549142 8.32481 -0.0549142 8.67572 0.164743 8.96647C0.673947 9.63821 1.283 10.2297 1.90203 10.7711C3.22995 11.9442 4.74758 12.9267 6.42496 13.3177C7.39345 13.5483 8.37192 13.5584 9.35039 13.3578C10.239 13.1774 11.0877 12.8164 11.8964 12.3653C13.1445 11.6534 14.2927 10.6809 15.2911 9.58808C15.4708 9.38756 15.6605 9.17702 15.8303 8.95644C15.9201 8.85618 15.98 8.72585 16 8.59551C16 8.58548 16 8.58548 16 8.57546C16 8.56543 16 8.56543 16 8.55541V8.54538C16 8.53535 16 8.53535 16 8.52533C16 8.5153 16 8.50528 16 8.49525C16 8.48522 15.99 8.48522 15.99 8.4752ZM8.0025 11.5131C6.34509 11.5131 5.00718 10.1696 5.00718 8.50528C5.00718 6.84097 6.34509 5.49749 8.0025 5.49749C9.65991 5.49749 10.9978 6.84097 10.9978 8.50528C10.9978 10.1696 9.65991 11.5131 8.0025 11.5131Z"
+                    fill="#8F95B2"
                   />
                 </svg>
               ) : (
@@ -159,57 +122,7 @@ const Signup = () => {
               {passwordError}
             </span>
           </div>
-          <div className={`relative mt-5 ${passwordError ? "mt-8" : ""}`}>
-            <input
-              type={isConfirmPasswordVisible ? "text" : "password"}
-              name="confirmPassword"
-              value={input.confirmPassword}
-              onChange={onChangeHandler}
-              className="block w-full mt-1 outline-none border-[1px] bg-[#F3F7FE] border-[#D4DCF1] focus:border-[#557FF2] px-4 lg:py-[0.55rem] py-3 rounded-md placeholder:text-black  placeholder:font-medium placeholder:text-sm dark:placeholder:text-white dark:bg-[#242428] dark:border-[#3366FF]/35"
-              placeholder="Confirm Password"
-              required
-            />
-            <div
-              className="absolute inset-y-0 right-0 flex items-center px-4 z-10 text-gray-600"
-              onClick={toggleConfirmPasswordVisibility}
-            >
-              {isConfirmPasswordVisible ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-5 h-5 stroke-[#0D2159] dark:stroke-white"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="dark:[&>path]:fill-[#BACAF5]"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M8 2.08325C7.31486 2.08325 6.65778 2.35542 6.17331 2.83989C5.68884 3.32436 5.41667 3.98144 5.41667 4.66659V6.58325H10.5833V4.66659C10.5833 3.98144 10.3112 3.32436 9.82669 2.83989C9.34222 2.35542 8.68514 2.08325 8 2.08325ZM12.0833 6.58325V4.66659C12.0833 3.58362 11.6531 2.54501 10.8874 1.77923C10.1216 1.01346 9.08297 0.583252 8 0.583252C6.91703 0.583252 5.87842 1.01346 5.11265 1.77923C4.34687 2.54501 3.91667 3.58362 3.91667 4.66659V6.58325H3.33333C2.18274 6.58325 1.25 7.51599 1.25 8.66659V13.3333C1.25 14.4838 2.18274 15.4166 3.33333 15.4166H12.6667C13.8173 15.4166 14.75 14.4838 14.75 13.3333V8.66659C14.75 7.51599 13.8173 6.58325 12.6667 6.58325H12.0833ZM3.33333 8.08325C3.01117 8.08325 2.75 8.34442 2.75 8.66659V13.3333C2.75 13.6554 3.01117 13.9166 3.33333 13.9166H12.6667C12.9888 13.9166 13.25 13.6554 13.25 13.3333V8.66659C13.25 8.34442 12.9888 8.08325 12.6667 8.08325H3.33333Z"
-                    fill="#0D2159"
-                  />
-                </svg>
-              )}
-            </div>
-            <span className="absolute -bottom-5 left-0 text-[0.75em] text-[#E95F5F]">
-              {passwordError}
-            </span>
-          </div>
+
           <button
             disabled={buttonDisabled}
             className={`w-full bg-[#3366FF] py-3 outline-none text-white text-base uppercase font-medium mt-6 ${
@@ -220,11 +133,11 @@ const Signup = () => {
           </button>
 
           <div className="my-3 flex flex-row items-center justify-center gap-2">
-            <div className="w-[30%] h-[2px] bg-[#3366FF]/35"></div>
+            <div className="w-[50%] h-[2px] bg-[#3366FF]/35"></div>
             <div className="text-sm text-black dark:text-[#FBFAFC] font-semibold">
               Or
             </div>
-            <div className="w-[30%] h-[2px] bg-[#3366FF]/35"></div>
+            <div className="w-[50%] h-[2px] bg-[#3366FF]/35"></div>
           </div>
 
           <div className="mt-2 w-full px-4 lg:py-[0.6rem] py-3 shadow-[0_0px_4px_-1.76px_rgba(0,0,0,0.9)] bg-white rounded-lg font-medium sm:text-sm text-[0.78em] cursor-pointer hover:bg-gray-50 dark:text-[#D8DAE5] border-[1px] dark:border-[1px] dark:border-[#D8DAE5] dark:bg-transparent">
@@ -312,13 +225,22 @@ const Signup = () => {
               <p>Sign Up with Apple</p>
             </div>
           </div>
-          <div className="w-full grid place-content-center text-sm text-start mt-6">
+          <div
+            onClick={toggleForgotPasswordModal}
+            className="cursor-pointer mt-8 text-sm text-center text-black dark:text-[#FBFAFC] underline decoration-black dark:decoration-white"
+          >
+            Forgot your password?
+          </div>
+          <div className="w-full grid place-content-center text-sm text-start mt-4">
             <div className="flex flex-row flex-wrap items-center justify-center space-x-2">
               <div className="text-black dark:text-[#FBFAFC]">
-                Already have an account?
+                Don’t have an account?
               </div>
-              <Link href="/signin" className="font-medium text-[#3366FF]">
-                Log in
+              <Link
+                href="/signup"
+                className="font-medium text-[#3366FF] underline decoration-[#3366FF]"
+              >
+                Sign up
               </Link>
             </div>
           </div>
@@ -328,4 +250,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signin;
