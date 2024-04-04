@@ -69,17 +69,12 @@ const Search = () => {
     const value = (params as any)?.q;
     setQuery(value);
     console.log(value);
-    // window.history.replaceState(
-    //   null,
-    //   "",
-    //   `?q=${query.toLowerCase().replace(/ /g, "+")}`
-    // );
   }, [query]);
 
   return (
     <>
-      <div className="bg-[#F3F7FE] dark:bg-transparent dark:text-[#FBFAFC] lg:px-16 sm:px-8 px-4 pb-3">
-        <h1 className="lg:text-xl font-medium">{query}</h1>
+      <div className="bg-[#F3F7FE] dark:bg-transparent dark:text-[#FBFAFC] lg:px-16 sm:px-8 px-4 pb-4">
+        <h1 className="lg:text-xl font-medium capitalize">{query}</h1>
         <p className="text-base font-medium mb-3">&quot;0&quot; Reviews</p>
 
         <div className="relative">

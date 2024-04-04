@@ -28,7 +28,7 @@ const Search = () => {
         <input
           type="search"
           name="query"
-          className="block w-full mt-1 outline-none border-[1px] bg-white border-[#D4DCF1] focus:border-[#557FF2] pl-10 pr-4 lg:py-[0.55rem] py-3 rounded-md placeholder:text-[#484851] placeholder:font-normal placeholder:text-sm dark:placeholder:text-[#999999] dark:bg-[#242428] dark:border-[#242428] dark:text-[#FBFAFC]"
+          className="block w-full mt-1 outline-none border-[1px] bg-white border-[#D4DCF1] focus:border-[#557FF2] pl-10 pr-4 lg:py-[0.55rem] py-3 rounded-md placeholder:text-[#484851] placeholder:font-normal placeholder:text-sm dark:placeholder:text-[#999999] dark:bg-[#242428] dark:border-[#242428] dark:text-[#FBFAFC] capitalize"
           placeholder="Search..."
           value={query}
           onChange={handleSearch}
