@@ -234,18 +234,18 @@ const Home = () => {
                             </div>
                           </div>
                           <p
-                            className={`text-xs px-3 pb-[3px] bg-red-400 ${
-                              item.category === "traffic" &&
-                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]"
+                            className={`text-xs px-3 pb-[3px] ${
+                              item.category === "traffic" ?
+                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]": ''
                             } ${
-                              item.category === "water" &&
-                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]"
+                              item.category === "water" ?
+                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]": ''
                             }  ${
-                              item.category === "power" &&
-                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]"
+                              item.category === "power" ?
+                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]" : ''
                             } ${
-                              item.category === "network" &&
-                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]"
+                              item.category === "network" ?
+                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]" : ''
                             } rounded-full`}
                           >
                             {item.category}
@@ -381,18 +381,18 @@ const Home = () => {
                             </div>
                           </div>
                           <p
-                            className={`text-xs px-3 pb-[3px] bg-red-400 ${
-                              item.category === "traffic" &&
-                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]"
+                            className={`text-xs px-3 pb-[3px] ${
+                              item.category === "traffic" ?
+                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]" :''
                             } ${
-                              item.category === "water" &&
-                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]"
+                              item.category === "water" ?
+                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]": ''
                             }  ${
-                              item.category === "power" &&
-                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]"
+                              item.category === "power" ?
+                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]": ''
                             } ${
-                              item.category === "network" &&
-                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]"
+                              item.category === "network" ?
+                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]": ''
                             } rounded-full`}
                           >
                             {item.category}
@@ -532,18 +532,18 @@ const Home = () => {
                             </div>
                           </div>
                           <p
-                            className={`text-xs px-3 pb-[3px] bg-red-400 ${
-                              item.category === "traffic" &&
-                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]"
+                            className={`text-xs px-3 pb-[3px] ${
+                              item.category === "traffic" ?
+                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]": ''
                             } ${
-                              item.category === "water" &&
-                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]"
+                              item.category === "water" ?
+                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]" : ''
                             }  ${
-                              item.category === "power" &&
-                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]"
+                              item.category === "power" ? 
+                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]" : ''
                             } ${
-                              item.category === "network" &&
-                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]"
+                              item.category === "network" ?
+                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]" : ''
                             } rounded-full`}
                           >
                             {item.category}
@@ -679,18 +679,18 @@ const Home = () => {
                             </div>
                           </div>
                           <p
-                            className={`text-xs px-3 pb-[3px] bg-red-400 ${
-                              item.category === "traffic" &&
-                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]"
+                            className={`text-xs px-3 pb-[3px] ${
+                              item.category === "traffic" ? 
+                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]": ''
                             } ${
-                              item.category === "water" &&
-                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]"
+                              item.category === "water" ?
+                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]" : ''
                             }  ${
-                              item.category === "power" &&
-                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]"
+                              item.category === "power" ?
+                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]" : ''
                             } ${
-                              item.category === "network" &&
-                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]"
+                              item.category === "network" ?
+                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]": ''
                             } rounded-full`}
                           >
                             {item.category}

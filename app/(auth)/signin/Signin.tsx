@@ -49,7 +49,7 @@ const Signin = () => {
         <ResetEmailPassword close={toggleForgotPasswordModal} />
       )}
 
-      <div className="lg:px-16 sm:px-8 px-4 lg:py-3 py-16">
+      <div className="lg:px-16 sm:px-8 px-4 lg:py-3 sm:py-14 py-12">
         <form
           onSubmit={submitHandler}
           className="lg:w-[37%] sm:w-[4/5] w-5/5 mx-auto sm:bg-white bg-[#FAFCFD] dark:bg-[#0D0D0D] dark:text-white sm:p-6 p-0 rounded-md mb-8"
