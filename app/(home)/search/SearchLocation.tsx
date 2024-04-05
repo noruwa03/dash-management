@@ -150,10 +150,10 @@ const SearchLocation = () => {
         <div className="lg:hidden block mb-2 w-full pt-6">
           <Search />
         </div>
-        <div className="flex flex-row items-start justify-between pt-2">
+        <div className="flex flex-row items-start justify-between pt-2 pb-3">
           <div className="flex flex-col">
             <h1 className="lg:text-xl font-medium capitalize">{query}</h1>
-            <p className="sm:text-base text-sm font-medium mb-3">
+            <p className="sm:text-base text-sm font-medium">
               {query.trim().length === 0 ? (
                 <> &quot;0&quot; Reviews</>
               ) : (

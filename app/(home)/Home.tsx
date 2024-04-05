@@ -104,7 +104,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <div className="lg:w-[47%] w-full lg:h-[80vh] h-full px-1 overflow-hidden bg-gradient-to-b from-[#F5F5F5] to-[#FFFFFF] dark:bg-gradient-to-b dark:from-[#F5F5F5]/0 dark:to-[#FFFFFF]/0 flex sm:flex-row flex-col items-center justify-between gap-6 relative">
+          <div className="lg:w-[47%] w-full lg:h-[80vh] h-full px-1 overflow-hidden bg-gradient-to-b from-[#F5F5F5] to-[#FFFFFF] dark:bg-gradient-to-b dark:from-[#F5F5F5]/0 dark:to-[#FFFFFF]/0 flex sm:flex-row flex-col items-center justify-between gap-6 relative rounded-xl">
             <div className="h-14 w-full bg-gradient-to-t from-[#FAFCFD]/40 to-[#FFFFFF] dark:bg-gradient-to-t dark:from-[#000]/20 dark:to-[#000] absolute top-0 left-0 z-10"></div>
             <div className="h-14 w-full bg-gradient-to-b from-[#FAFCFD]/40 to-[#FFFFFF] dark:bg-gradient-to-b dark:from-[#000]/20 dark:to-[#000] absolute bottom-0 left-0 z-10"></div>
             <div className="sm:w-[50%] w-[100%]">
