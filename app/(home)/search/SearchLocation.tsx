@@ -259,7 +259,7 @@ const SearchLocation = () => {
             </svg>
           </div>
         </div>
-        <div className="mt-4 lg:hidden flex flex-row items-center sm:justify-end justify-evenly gap-4">
+        <div className="mt-4 lg:hidden flex flex-row items-center sm:justify-end justify-end gap-4">
           <button
             onClick={toggleReviewModal}
             className="bg-[#3366FF] py-[0.5rem] px-8 outline-none text-white sm:text-base text-sm uppercase font-normal rounded-md"

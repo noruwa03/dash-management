@@ -57,8 +57,8 @@ const Home = () => {
   return (
     <>
       <div className="lg:px-16 sm:px-8 px-4 lg:py-0 sm:py-20 py-16">
-        <div className="grid grid-cols-6 gap-8">
-          <div className="lg:col-span-3 col-span-6 grid place-content-center lg:mb-0 mb-8">
+        <div className="flex lg:flex-row flex-col items-center gap-8">
+          <div className="lg:w-[53%] w-full grid place-content-center lg:mb-0 mb-24">
             {" "}
             <div className="lg:w-4/5 w-5/5">
               {" "}
@@ -104,7 +104,7 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <div className="lg:col-span-3 col-span-6 lg:h-[80vh] h-full px-1 overflow-hidden bg-gradient-to-b from-[#F5F5F5] to-[#FFFFFF] dark:bg-gradient-to-b dark:from-[#F5F5F5]/0 dark:to-[#FFFFFF]/0 flex sm:flex-row flex-col items-center justify-between gap-6 relative">
+          <div className="lg:w-[47%] w-full lg:h-[80vh] h-full px-1 overflow-hidden bg-gradient-to-b from-[#F5F5F5] to-[#FFFFFF] dark:bg-gradient-to-b dark:from-[#F5F5F5]/0 dark:to-[#FFFFFF]/0 flex sm:flex-row flex-col items-center justify-between gap-6 relative">
             <div className="h-14 w-full bg-gradient-to-t from-[#FAFCFD]/40 to-[#FFFFFF] dark:bg-gradient-to-t dark:from-[#000]/20 dark:to-[#000] absolute top-0 left-0 z-10"></div>
             <div className="h-14 w-full bg-gradient-to-b from-[#FAFCFD]/40 to-[#FFFFFF] dark:bg-gradient-to-b dark:from-[#000]/20 dark:to-[#000] absolute bottom-0 left-0 z-10"></div>
             <div className="sm:w-[50%] w-[100%]">
@@ -235,17 +235,21 @@ const Home = () => {
                           </div>
                           <p
                             className={`text-xs px-3 pb-[3px] ${
-                              item.category === "traffic" ?
-                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]": ''
+                              item.category === "traffic"
+                                ? "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]"
+                                : ""
                             } ${
-                              item.category === "water" ?
-                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]": ''
+                              item.category === "water"
+                                ? "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]"
+                                : ""
                             }  ${
-                              item.category === "power" ?
-                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]" : ''
+                              item.category === "power"
+                                ? "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]"
+                                : ""
                             } ${
-                              item.category === "network" ?
-                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]" : ''
+                              item.category === "network"
+                                ? "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]"
+                                : ""
                             } rounded-full`}
                           >
                             {item.category}
@@ -382,17 +386,21 @@ const Home = () => {
                           </div>
                           <p
                             className={`text-xs px-3 pb-[3px] ${
-                              item.category === "traffic" ?
-                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]" :''
+                              item.category === "traffic"
+                                ? "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]"
+                                : ""
                             } ${
-                              item.category === "water" ?
-                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]": ''
+                              item.category === "water"
+                                ? "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]"
+                                : ""
                             }  ${
-                              item.category === "power" ?
-                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]": ''
+                              item.category === "power"
+                                ? "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]"
+                                : ""
                             } ${
-                              item.category === "network" ?
-                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]": ''
+                              item.category === "network"
+                                ? "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]"
+                                : ""
                             } rounded-full`}
                           >
                             {item.category}
@@ -533,17 +541,21 @@ const Home = () => {
                           </div>
                           <p
                             className={`text-xs px-3 pb-[3px] ${
-                              item.category === "traffic" ?
-                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]": ''
+                              item.category === "traffic"
+                                ? "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]"
+                                : ""
                             } ${
-                              item.category === "water" ?
-                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]" : ''
+                              item.category === "water"
+                                ? "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]"
+                                : ""
                             }  ${
-                              item.category === "power" ? 
-                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]" : ''
+                              item.category === "power"
+                                ? "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]"
+                                : ""
                             } ${
-                              item.category === "network" ?
-                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]" : ''
+                              item.category === "network"
+                                ? "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]"
+                                : ""
                             } rounded-full`}
                           >
                             {item.category}
@@ -680,17 +692,21 @@ const Home = () => {
                           </div>
                           <p
                             className={`text-xs px-3 pb-[3px] ${
-                              item.category === "traffic" ? 
-                              "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]": ''
+                              item.category === "traffic"
+                                ? "bg-[#F5E9CB] text-[#594510] border-[1px] border-[#A07C22]"
+                                : ""
                             } ${
-                              item.category === "water" ?
-                              "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]" : ''
+                              item.category === "water"
+                                ? "bg-[#D1E4FA] text-[#1F4781] border-[1px] border-[#2863B8]"
+                                : ""
                             }  ${
-                              item.category === "power" ?
-                              "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]" : ''
+                              item.category === "power"
+                                ? "bg-[#F66A57] text-[#101012] border-[1px] border-[#F66A57]"
+                                : ""
                             } ${
-                              item.category === "network" ?
-                              "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]": ''
+                              item.category === "network"
+                                ? "bg-[#FCDCEF] text-[#101012] border-[1px] border-[#AD307B]"
+                                : ""
                             } rounded-full`}
                           >
                             {item.category}
