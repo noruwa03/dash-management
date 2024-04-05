@@ -21,10 +21,22 @@ const Search = () => {
       `?q=${value.toLowerCase().replace(/ /g, "+")}`
     );
   }, []);
+
+  const findLocation = (evt: any) => {
+    if (evt.key === "Enter") {
+      const newUrl = `${window.location.pathname}?q=${evt.target.value
+        .toLowerCase()
+        .toString()}`;
+
+      // Reload the window with the updated URL
+      window.location.href = newUrl;
+    }
+  };
+
   return (
     <>
       {" "}
-      <div className="relative lg:w-3/5 sm:w-2/5 sm:block hidden">
+      <div className="relative lg:w-3/5 w-5/5">
         <input
           type="search"
           name="query"
@@ -32,6 +44,7 @@ const Search = () => {
           placeholder="Search..."
           value={query}
           onChange={handleSearch}
+          onKeyDown={findLocation}
           required
         />
         <div className="absolute inset-y-0 top-1 left-0 flex items-center px-4 z-10 text-gray-600">

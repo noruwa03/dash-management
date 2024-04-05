@@ -45,7 +45,11 @@ const Header = (Props: BgColor) => {
           </svg>
         </Link>
 
-        {Props.search && <Search />}
+        {Props.search && (
+          <div className="lg:block hidden">
+            <Search />
+          </div>
+        )}
         <ThemeSwitcher />
 
         <div className="flex flex-row items-center gap-5">
