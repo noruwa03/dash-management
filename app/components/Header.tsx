@@ -12,8 +12,10 @@ type BgColor = {
 
 const Header = (Props: BgColor) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const toggleAuth = () => setIsLoggedIn(!isLoggedIn);
+  
+  const handleChange = (evt: any) => {
+    setIsLoggedIn(evt.target.checked);
+  };
   return (
     <div
       className={`lg:px-16 sm:px-8 px-4 py-5 ${
@@ -46,19 +48,15 @@ const Header = (Props: BgColor) => {
         </Link>
 
         {Props.search && (
-          <div className="lg:block hidden">
+          <div className="lg:block hidden lg:w-[50%]">
             <Search />
           </div>
         )}
         <ThemeSwitcher />
 
         <div className="flex flex-row items-center gap-5">
-          <span
-            onClick={toggleAuth}
-            className="text-sm cursor-pointer text-red-400 dark:text-white"
-          >
-            Toggle auth
-          </span>
+          <input type="checkbox" checked={isLoggedIn} onChange={handleChange} />
+
           {isLoggedIn ? (
             <>
               <div className="flex flex-row items-center gap-3">

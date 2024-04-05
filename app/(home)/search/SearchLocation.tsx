@@ -1,6 +1,9 @@
 import { Fragment, createRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Search from "@/app/components/Search";
+import AddReview from "@/app/components/Modals/AddReview";
+import Success from "@/app/components/Notification/Success";
+import Error from "@/app/components/Notification/Error";
 
 const SearchLocation = () => {
   // Topics Array
@@ -53,7 +56,7 @@ const SearchLocation = () => {
     "/images/location_four.png",
   ];
 
-  const items = [
+  const items: any = [
     {
       avatar: "/images/avatar_one.png",
       name: "James T.",
@@ -91,6 +94,15 @@ const SearchLocation = () => {
     },
   ];
 
+  const [currentIndex, setCurrentIndex] = useState<any>(null);
+  const [reviewModal, setReviewModal] = useState(false);
+
+  const [reviewSuccess, setReviewSuccess] = useState("");
+
+  const toggleReviewModal = () => {
+    setReviewModal((prevState) => !prevState);
+  };
+
   const topicRef = createRef<HTMLDivElement>();
   const [prevButton, setPrevButton] = useState(false);
 
@@ -117,18 +129,32 @@ const SearchLocation = () => {
     setQuery(value);
   }, [query]);
 
+  const postComment = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <>
-      <div className="z-10 sticky lg:top-[2rem] sm:top-[5.5rem] top-[4.7rem] left-0 bg-[#F3F7FE] dark:bg-transparent dark:text-[#FBFAFC] lg:px-16 sm:px-8 px-4 pb-4">
-        <div className="lg:hidden block mb-2 pt-3 w-full">
+      {reviewSuccess === "" ? null : reviewSuccess === "Review submitted" ? (
+        <Success message={reviewSuccess} />
+      ) : (
+        <Error message={reviewSuccess} />
+      )}
+      {reviewModal && (
+        <AddReview
+          close={toggleReviewModal}
+          setReviewSuccess={setReviewSuccess}
+        />
+      )}
+      <div className="z-10 sticky lg:top-[1.8rem] sm:top-[3.5rem] top-[3.3rem] left-0 bg-[#F3F7FE] dark:bg-[#0D0D0D] dark:text-[#FBFAFC] lg:px-16 sm:px-8 px-4 pb-4">
+        <div className="lg:hidden block mb-2 w-full pt-6">
           <Search />
         </div>
-        <div className="flex flex-row items-start justify-between">
+        <div className="flex flex-row items-start justify-between pt-2">
           <div className="flex flex-col">
             <h1 className="lg:text-xl font-medium capitalize">{query}</h1>
-            <p className="text-base font-medium mb-3">
-              {query.toLowerCase() !==
-              "Bonny and Clyde Street, Ajao Estate, Lagos".toLowerCase() ? (
+            <p className="sm:text-base text-sm font-medium mb-3">
+              {query.trim().length === 0 ? (
                 <> &quot;0&quot; Reviews</>
               ) : (
                 <>
@@ -140,10 +166,13 @@ const SearchLocation = () => {
           </div>
 
           <div className="lg:flex hidden flex-row items-center justify-start gap-4">
-            <button className="bg-[#3366FF] py-[0.5rem] px-8 outline-none text-white text-base uppercase font-normal rounded-md">
+            <button
+              onClick={toggleReviewModal}
+              className="bg-[#3366FF] py-[0.5rem] px-8 outline-none text-white text-base uppercase font-normal rounded-md"
+            >
               Leave a review
             </button>
-            <div className="border-[1px] border-[#3366FF] py-[0.7rem] px-4 rounded-md grid place-content-center bg-white">
+            <div className="border-[1px] border-[#3366FF] py-[0.7rem] px-4 rounded-md grid place-content-center bg-white dark:bg-transparent">
               <svg
                 width="12"
                 height="16"
@@ -157,7 +186,7 @@ const SearchLocation = () => {
                 />
               </svg>
             </div>
-            <div className="border-[1px] border-[#3366FF] py-[0.6rem] px-[0.8rem] rounded-md grid place-content-center bg-white">
+            <div className="border-[1px] border-[#3366FF] py-[0.6rem] px-[0.8rem] rounded-md grid place-content-center bg-white dark:bg-transparent">
               <svg
                 width="18"
                 height="20"
@@ -181,7 +210,7 @@ const SearchLocation = () => {
           >
             {relevantTopics.map((topic: any, index: number) => (
               <Fragment key={index}>
-                <div className="py-[0.3rem] px-4 border-[1px] border-[#1E1E1E] dark:border-[#FBFAFC] bg-[#FBFAFC] dark:bg-[#242428] text-[0.90em] text-[#1E1E1E] dark:text-[#FBFAFC] font-medium cursor-pointer rounded-md">
+                <div className="sm:py-[0.3rem] py-[0.25rem] sm:px-4 px-2 border-[1px] border-[#1E1E1E] dark:border-[#FBFAFC] bg-[#FBFAFC] dark:bg-[#242428] sm:text-[0.90em] text-xs text-[#1E1E1E] dark:text-[#FBFAFC] font-medium cursor-pointer rounded-md">
                   {topic.name}
                 </div>
               </Fragment>
@@ -230,11 +259,14 @@ const SearchLocation = () => {
             </svg>
           </div>
         </div>
-        <div className="sm:mt-0 mt-4 sm:hidden flex flex-row items-center justify-evenly gap-4">
-          <button className="bg-[#3366FF] py-[0.5rem] px-8 outline-none text-white text-base uppercase font-normal rounded-md">
+        <div className="mt-4 lg:hidden flex flex-row items-center sm:justify-end justify-evenly gap-4">
+          <button
+            onClick={toggleReviewModal}
+            className="bg-[#3366FF] py-[0.5rem] px-8 outline-none text-white sm:text-base text-sm uppercase font-normal rounded-md"
+          >
             Leave a review
           </button>
-          <div className="border-[1px] border-[#3366FF] py-[0.7rem] px-4 rounded-md grid place-content-center bg-white">
+          <div className="border-[1px] border-[#3366FF] sm:py-[0.7rem] py-[0.6rem] sm:px-4 px-3 rounded-md grid place-content-center bg-white dark:bg-transparent">
             <svg
               width="12"
               height="16"
@@ -248,7 +280,7 @@ const SearchLocation = () => {
               />
             </svg>
           </div>
-          <div className="border-[1px] border-[#3366FF] py-[0.6rem] px-[0.8rem] rounded-md grid place-content-center bg-white">
+          <div className="border-[1px] border-[#3366FF] sm:py-[0.6rem] py-[0.5rem] sm:px-[0.8rem] px-[0.6rem] rounded-md grid place-content-center bg-white dark:bg-transparent">
             <svg
               width="18"
               height="20"
@@ -264,8 +296,7 @@ const SearchLocation = () => {
           </div>
         </div>
       </div>
-      {query.toLowerCase() !==
-      "Bonny and Clyde Street, Ajao Estate, Lagos".toLowerCase() ? (
+      {query.trim().length === 0 ? (
         <div className="lg:py-16 py-14">
           <div className="grid place-content-center">
             <svg
@@ -625,7 +656,7 @@ const SearchLocation = () => {
           </div>
         </div>
       ) : (
-        <div className="lg:px-16 sm:px-8 px-4">
+        <div className="lg:px-16 sm:px-8 px-4 dark:text-[#FBFAFC]">
           <div className="flex lg:flex-row flex-col-reverse items-start justify-between gap-6">
             <div className="lg:w-[62%] w-[100%] py-3 divide-y-[1px] divide-[#D9D9D9]">
               {items.map((item: any, index: number) => (
@@ -668,7 +699,7 @@ const SearchLocation = () => {
                       </div>
                     </div>
                     <p className="text-[0.95em] my-2">{item.text}</p>
-                    <div className="mt-2 flex flex-row items-center gap-6 text-xs text-gray-400 cursor-default">
+                    <div className="dark:[&>*>svg>path]:fill-[#BACAF5] mt-2 flex flex-row items-center gap-6 text-xs text-gray-400 cursor-default">
                       <div className="flex flex-row items-center gap-1">
                         <svg
                           width="24"
@@ -709,6 +740,7 @@ const SearchLocation = () => {
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
                           className="cursor-pointer"
+                          onClick={() => postComment(index)}
                         >
                           <path
                             d="M6.59609 16.7H7.09609V16.2H6.59609V16.7ZM8.64809 21.152L9.00165 21.5056L9.00212 21.5051L8.64809 21.152ZM13.0881 16.7V16.2H12.8806L12.7341 16.3469L13.0881 16.7ZM19.7961 3H4.19609V4H19.7961V3ZM4.19609 3C3.25995 3 2.49609 3.76386 2.49609 4.7H3.49609C3.49609 4.31614 3.81224 4 4.19609 4V3ZM2.49609 4.7V15.5H3.49609V4.7H2.49609ZM2.49609 15.5C2.49609 16.4361 3.25995 17.2 4.19609 17.2V16.2C3.81224 16.2 3.49609 15.8839 3.49609 15.5H2.49609ZM4.19609 17.2H6.59609V16.2H4.19609V17.2ZM6.09609 16.7V20.3H7.09609V16.7H6.09609ZM6.09609 20.3C6.09609 21.2361 6.85995 22 7.79609 22V21C7.41224 21 7.09609 20.6839 7.09609 20.3H6.09609ZM7.79609 22C8.26621 22 8.69295 21.8143 9.00165 21.5056L8.29454 20.7984C8.17124 20.9217 7.99798 21 7.79609 21V22ZM9.00212 21.5051L13.4421 17.0531L12.7341 16.3469L8.29406 20.7989L9.00212 21.5051ZM13.0881 17.2H19.7961V16.2H13.0881V17.2ZM19.7961 17.2C20.7322 17.2 21.4961 16.4361 21.4961 15.5H20.4961C20.4961 15.8839 20.18 16.2 19.7961 16.2V17.2ZM21.4961 15.5V4.7H20.4961V15.5H21.4961ZM21.4961 4.7C21.4961 3.76386 20.7322 3 19.7961 3V4C20.18 4 20.4961 4.31614 20.4961 4.7H21.4961Z"
@@ -718,6 +750,20 @@ const SearchLocation = () => {
                         24
                       </div>
                     </div>
+                    {currentIndex === index ? (
+                      <div className="relative mt-3">
+                        <input
+                          type="text"
+                          id="Comment"
+                          name="comment"
+                          className="block w-full outline-none border-t-[1px] bg-transparent border-[#D9D9D9] focus:border-[#D9D9D9] pt-4 lg:pb-2 pr-20 placeholder:text-[#1E1E1E] dark:placeholder:text-[#FBFAFC] placeholder:font-normal lg:placeholder:text-base placeholder:text-sm lg:text-base text-sm"
+                          placeholder="Add a comment"
+                        />
+                        <button className="absolute lg:right-[1rem] lg:top-[1rem] lg:bottom-[1rem] right-[0.5rem] top-[0.6rem] bottom-[0.5rem] cursor-pointer text-sm bg-[#3366FF] text-white rounded-lg lg:px-6 px-4 py-4 flex flex-row items-center justify-center uppercase">
+                          Post
+                        </button>
+                      </div>
+                    ) : null}
                   </div>
                 </Fragment>
               ))}
@@ -732,7 +778,7 @@ const SearchLocation = () => {
                         className={`snap-center lg:w-[12.5rem] w-[17.5rem] relative aspect-[4/4] ${
                           index === locations.length - 1
                             ? "last:before:content-['VIEW_MORE'] last:before:absolute last:before:top-[50%] last:before:left-[50%] last:before:-translate-y-[50%] last:before:-translate-x-[50%] last:font-medium last:text-white bg-blue-100"
-                            : "bg-red-200"
+                            : ""
                         }`}
                       >
                         <Image

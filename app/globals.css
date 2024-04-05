@@ -25,7 +25,7 @@
   background: #4b5563;
 }
 
-input[type="checkbox"] {
+#check {
   margin: 0;
   display: none;
   background-color: transparent;
@@ -60,17 +60,17 @@ input[type="checkbox"] {
   transition: 0.3s ease;
 }
 
-input[type="checkbox"]:checked ~ .check-label .switcher {
+#check:checked ~ .check-label .switcher {
   background-color: #557FF2;
   position: absolute;
   left: 2.6rem;
   transition: 0.3s ease;
 }
 
-input[type="checkbox"]:checked ~ .check-label .sun path {
+#check:checked ~ .check-label .sun path {
   fill: #b2abab;
 }
 
-input[type="checkbox"]:checked ~ .check-label .moon path {
+#check:checked ~ .check-label .moon path {
   fill: #fff;
 }

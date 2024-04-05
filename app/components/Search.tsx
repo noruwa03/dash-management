@@ -36,7 +36,7 @@ const Search = () => {
   return (
     <>
       {" "}
-      <div className="relative lg:w-3/5 w-5/5">
+      <div className="relative lg:w-full w-5/5">
         <input
           type="search"
           name="query"
@@ -47,7 +47,7 @@ const Search = () => {
           onKeyDown={findLocation}
           required
         />
-        <div className="absolute inset-y-0 top-1 left-0 flex items-center px-4 z-10 text-gray-600">
+        <div className="absolute inset-y-0 top-0 left-0 flex items-center px-4 z-10 text-gray-600">
           <svg
             width="16"
             height="16"
