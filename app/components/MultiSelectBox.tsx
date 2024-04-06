@@ -21,11 +21,11 @@ const MultiSelectBox = (Props: SelectBox) => {
     Props.onChange(newData, updatedItem);
   };
   return (
-    <div className="bg-[#F3F7FE] dark:bg-[#242428] dark:text-[#FBFAFC] flex flex-row flex-wrap items-center justify-start gap-4 p-4 border-[1px] border-[#D4DCF1] dark:border-[#242428] rounded-md">
+    <div className="bg-[#F3F7FE] dark:bg-[#242428] dark:text-[#FBFAFC] grid grid-cols-6 gap-4 p-4 border-[1px] border-[#D4DCF1] dark:border-[#242428] rounded-md">
       {Props.data.map(({ label, key, isSelected }: any) => {
         return (
           <div
-            className="flex flex-row items-center gap-2 capitalize text-sm"
+            className="lg:col-span-2 sm:col-span-2 col-span-3 flex flex-row sm:items-center items-start gap-2 capitalize sm:text-sm text-xs"
             key={key}
           >
             <input
@@ -34,7 +34,9 @@ const MultiSelectBox = (Props: SelectBox) => {
               checked={!!isSelected}
               onChange={(e) => handleChange(e)}
             />
-            {label}
+            <span className="sm:-translate-y-0 -translate-y-[0.17rem]">
+              {label}
+            </span>
           </div>
         );
       })}

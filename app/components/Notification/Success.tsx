@@ -4,8 +4,8 @@ interface ISuccess {
 
 const Success = (props: ISuccess) => {
   return (
-    <div className="z-50 fixed lg:top-20 top-12 left-[50%] -translate-x-[50%] right-3">
-      <div className="mx-2 sm:mx-auto max-w-sm flex flex-row items-center justify-center bg-[#F2FDF2] border-[1px] border-[#0F920F] lg:p-5 p-3 text-sm leading-none rounded-lg">
+    <div className="z-50 fixed lg:top-20 top-20 left-[50%] -translate-x-[50%]">
+      <div className="mx-2 lg:w-[23rem] w-[17rem] flex flex-row items-center justify-center bg-[#F2FDF2] border-[1px] border-[#0F920F] lg:p-5 p-3 text-sm leading-none rounded-lg">
         <div className="inline-flex items-center justify-center gap-3 text-[#0F920F]">
           <svg
             width="17"

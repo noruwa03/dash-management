@@ -158,7 +158,7 @@ const AddReview = (Props: Modal) => {
               value={state.inputValue}
               readOnly
               onClick={() => handleInputClick()}
-              className="block w-full mt-1 outline-none border-[1px] bg-[#F3F7FE] border-[#D4DCF1] dark:border-[#242428] focus:border-[#F3F7FE] px-4 lg:py-[0.65rem] py-[0.9rem] rounded-md placeholder:text-black placeholder:font-medium placeholder:text-sm placeholder:dark:text-[#FBFAFC] dark:bg-[#242428] cursor-default text-sm dark:text-[#FBFAFC]"
+              className="block w-full mt-1 outline-none border-[1px] bg-[#F3F7FE] border-[#D4DCF1] dark:border-[#242428] focus:border-[#F3F7FE] px-4 lg:py-[0.65rem] py-[0.9rem] rounded-md placeholder:text-black placeholder:font-medium placeholder:text-sm placeholder:dark:text-[#FBFAFC] dark:bg-[#242428] cursor-default sm:text-sm text-xs dark:text-[#FBFAFC]"
               placeholder="Select Amenities"
               required
             />
@@ -182,7 +182,7 @@ const AddReview = (Props: Modal) => {
           </div>
           <div>
             {state.isOpen && (
-              <div className="fixed lg:top-[9.4rem] top-[9.1rem] left-0 w-full lg:px-6 px-4">
+              <div className="fixed lg:top-[9.4rem] sm:top-[9.1rem] top-[10.5rem] left-0 w-full sm:px-6 px-4">
                 {" "}
                 <MultiSelectBox data={reviewState} onChange={onChange} />
               </div>

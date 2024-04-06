@@ -54,6 +54,9 @@ const SearchLocation = () => {
     "/images/location_two.png",
     "/images/location_three.png",
     "/images/location_four.png",
+    "/images/location_one.png",
+    "/images/location_four.png",
+    "/images/location_one.png",
   ];
 
   const items: any = [
@@ -674,7 +677,8 @@ const SearchLocation = () => {
                           className="w-7 h-7 rounded-full"
                         />
                         <p className="text-xs font-medium">
-                          {item.name}
+                          {item.name}{" "}
+                          {index === 1 ? <span>(Admin)</span> : null}
                           <span className="ms-2 font-normal text-gray-400">
                             5 months ago
                           </span>
@@ -770,14 +774,29 @@ const SearchLocation = () => {
             </div>
             <div className="lg:w-[37%] w-[100%] lg:sticky top-44 left-0 lg:pt-6 lg:pb-0 lg:pr-0 pt-3 pb-3 pl-0 pr-3">
               {" "}
-              <ul className="flex lg:flex-row flex-row lg:flex-wrap items-center lg:justify-center justify-start snap-x snap-mandatory w-full mx:auto overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] gap-4 whitespace-nowrap ">
-                {locations.map((data: any, index: number) => (
+              <ul className="flex lg:flex-row flex-row lg:flex-wrap items-center lg:justify-center justify-start snap-x snap-mandatory w-full mx:auto overflow-x-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] gap-4">
+                <li className="">
+                  <div
+                    className={`snap-center xl:w-[12.5rem] lg:w-[9rem] w-[14.5rem] relative lg:aspect-[4/4] aspect-[4/4.8]`}
+                  >
+                    <Image
+                      src={locations[0]}
+                      alt="Image"
+                      priority={true}
+                      unoptimized={true}
+                      width={50}
+                      height={50}
+                      className="w-full h-full rounded-md lg:object-contain object-cover"
+                    />
+                  </div>
+                </li>
+                {locations.slice(1, 4).map((data: any, index: number) => (
                   <Fragment key={index}>
-                    <li className="">
+                    <li className="lg:block hidden relative">
                       <div
-                        className={`snap-center lg:w-[12.5rem] w-[17.5rem] relative aspect-[4/4] ${
-                          index === locations.length - 1
-                            ? "last:before:content-['VIEW_MORE'] last:before:absolute last:before:top-[50%] last:before:left-[50%] last:before:-translate-y-[50%] last:before:-translate-x-[50%] last:font-medium last:text-white bg-blue-100"
+                        className={`snap-center xl:w-[12.5rem] lg:w-[9rem] w-[43%] aspect-[4/3.9] ${
+                          index === 2
+                            ? "last:before:content-['VIEW_MORE'] last:before:text-center last:before:absolute last:before:top-[50%] last:before:left-[50%] last:before:-translate-y-[50%] last:before:-translate-x-[50%] last:font-medium last:text-white bg-blue-100"
                             : ""
                         }`}
                       >
@@ -788,12 +807,37 @@ const SearchLocation = () => {
                           unoptimized={true}
                           width={50}
                           height={50}
-                          className="w-full h-full rounded-md "
+                          className="w-full h-full rounded-md object-cover"
                         />
                       </div>
                     </li>
                   </Fragment>
                 ))}
+                <li className="lg:hidden flex flex-row snap-center">
+                  <div className="flex flex-row flex-wrap w-[500px] h-[275px] overflow-y-scroll [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] gap-4">
+                    {locations.slice(1).map((data: any, index: number) => (
+                      <Fragment key={index}>
+                        <div
+                          className={`snap-center lg:w-[12.5rem] w-[43%] aspect-[4/2.8] ${
+                            index === locations.length - 1
+                              ? "lg:last:before:content-['VIEW_MORE'] last:before:absolute last:before:top-[50%] last:before:left-[50%] last:before:-translate-y-[50%] last:before:-translate-x-[50%] last:font-medium last:text-white bg-blue-100"
+                              : ""
+                          }`}
+                        >
+                          <Image
+                            src={data}
+                            alt="Image"
+                            priority={true}
+                            unoptimized={true}
+                            width={50}
+                            height={50}
+                            className="w-full h-full rounded-md object-cover"
+                          />
+                        </div>
+                      </Fragment>
+                    ))}
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
